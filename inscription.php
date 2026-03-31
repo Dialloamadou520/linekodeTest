@@ -450,12 +450,15 @@
             // Log pour vérifier les données
             console.log('✅ Données stockées:', window.paymentData);
             
-            // Afficher la sélection d'opérateur
-            const operatorSelection = document.getElementById('operatorSelection');
-            operatorSelection.style.display = 'block';
+            // Afficher un message de chargement
+            const loadingMsg = document.createElement('div');
+            loadingMsg.id = 'paymentLoading';
+            loadingMsg.style.cssText = 'text-align: center; padding: 40px; font-size: 18px;';
+            loadingMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirection vers la page de paiement DexpayAfrica...';
+            this.parentElement.appendChild(loadingMsg);
             
-            // Scroller vers la sélection d'opérateur
-            operatorSelection.scrollIntoView({ behavior: 'smooth' });
+            // Appeler directement l'API DexpayAfrica
+            processDexpayPaymentDirect(formData.get('telephone'), formData.get('email'));
         });
     </script>
     <script>
