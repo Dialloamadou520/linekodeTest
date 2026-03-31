@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscriptions - Admin Linekode</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin-dynamic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Réutiliser les styles du dashboard */
+        .admin-dashboard {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+        .admin-header {
+            background: #0284c7;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .btn-logout {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-logout:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .admin-container {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+        .admin-sidebar {
+            width: 250px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            padding: 20px 0;
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: #6b7280;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: #f0f9ff;
+            color: #0284c7;
+            border-right: 3px solid #0284c7;
+        }
+        .admin-content {
+            flex: 1;
+            padding: 30px;
+        }
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .page-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+        }
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 300px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+        }
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th {
+            background: #f8fafc;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #6b7280;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .table td {
+            padding: 12px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-new {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        .badge-pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .badge-confirmed {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        .badge-cancelled {
+            background: #fecaca;
+            color: #dc2626;
+        }
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-action {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .btn-view {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+        .btn-view:hover {
+            background: #0284c7;
+            color: white;
+        }
+        .btn-confirm {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        .btn-confirm:hover {
+            background: #16a34a;
+            color: white;
+        }
+        .btn-delete {
+            background: #fecaca;
+            color: #dc2626;
+        }
+        .btn-delete:hover {
+            background: #dc2626;
+            color: white;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        .student-info {
+            display: grid;
+            gap: 15px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #6b7280;
+        }
+        .info-value {
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-logo">
+                <i class="fas fa-code"></i>
+                <span>Linekode Admin</span>
+            </div>
+            <div class="admin-user">
+                <span><i class="fas fa-user"></i> Administrateur</span>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </header>
+
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="inscriptions.html" class="active"><i class="fas fa-user-plus"></i> Inscriptions</a></li>
+                    <li><a href="annonces.html"><i class="fas fa-bullhorn"></i> Annonces</a></li>
+                    <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li><a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="admin-content">
+                <div class="content-header">
+                    <h1 class="page-title">Gestion des Inscriptions</h1>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Rechercher un étudiant..." id="searchInput">
+                    </div>
+                    <select class="filter-select" id="statusFilter">
+                        <option value="">Tous les statuts</option>
+                        <option value="new">Nouveaux</option>
+                        <option value="pending">En attente</option>
+                        <option value="confirmed">Confirmés</option>
+                        <option value="cancelled">Annulés</option>
+                    </select>
+                    <select class="filter-select" id="formationFilter">
+                        <option value="">Toutes les formations</option>
+                        <option value="web">Développement Web</option>
+                        <option value="react">React Avancé</option>
+                        <option value="design">UI/UX Design</option>
+                    </select>
+                </div>
+
+                <!-- Inscriptions Table -->
+                <div class="content-section">
+                    <table class="table" id="inscriptionsTable">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Téléphone</th>
+                                <th>Formation</th>
+                                <th>Date</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mamadou Ba</td>
+                                <td>mamadou.ba@email.com</td>
+                                <td>77 123 45 67</td>
+                                <td>Développement Web</td>
+                                <td>19/02/2026</td>
+                                <td><span class="badge badge-new">Nouveau</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-action btn-view" onclick="viewStudent('Mamadou Ba')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-confirm" onclick="confirmInscription('Mamadou Ba')">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" onclick="deleteInscription('Mamadou Ba')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Awa Sène</td>
+                                <td>awa.sene@email.com</td>
+                                <td>77 234 56 78</td>
+                                <td>React Avancé</td>
+                                <td>18/02/2026</td>
+                                <td><span class="badge badge-pending">En attente</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-action btn-view" onclick="viewStudent('Awa Sène')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-confirm" onclick="confirmInscription('Awa Sène')">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" onclick="deleteInscription('Awa Sène')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ibrahim Fall</td>
+                                <td>ibrahim.fall@email.com</td>
+                                <td>77 345 67 89</td>
+                                <td>UI/UX Design</td>
+                                <td>17/02/2026</td>
+                                <td><span class="badge badge-confirmed">Confirmé</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-action btn-view" onclick="viewStudent('Ibrahim Fall')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" onclick="deleteInscription('Ibrahim Fall')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fatou Ndiaye</td>
+                                <td>fatou.ndiaye@email.com</td>
+                                <td>77 456 78 90</td>
+                                <td>Développement Web</td>
+                                <td>16/02/2026</td>
+                                <td><span class="badge badge-confirmed">Confirmé</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-action btn-view" onclick="viewStudent('Fatou Ndiaye')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" onclick="deleteInscription('Fatou Ndiaye')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Oumar Sy</td>
+                                <td>oumar.sy@email.com</td>
+                                <td>77 567 89 01</td>
+                                <td>React Avancé</td>
+                                <td>15/02/2026</td>
+                                <td><span class="badge badge-cancelled">Annulé</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-action btn-view" onclick="viewStudent('Oumar Sy')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" onclick="deleteInscription('Oumar Sy')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Student Details Modal -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>Détails de l'inscription</h2>
+            <div class="student-info" id="studentDetails">
+                <!-- Les détails seront chargés dynamiquement -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vérifier si l'utilisateur est connecté
+        if (!localStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+
+        function viewStudent(studentName) {
+            // Simuler le chargement des détails de l'étudiant
+            const studentData = {
+                'Mamadou Ba': {
+                    email: 'mamadou.ba@email.com',
+                    phone: '77 123 45 67',
+                    formation: 'Développement Web',
+                    date: '19/02/2026',
+                    status: 'Nouveau',
+                    address: 'Dakar, Plateau',
+                    motivation: 'Je veux devenir développeur web professionnel'
+                },
+                'Awa Sène': {
+                    email: 'awa.sene@email.com',
+                    phone: '77 234 56 78',
+                    formation: 'React Avancé',
+                    date: '18/02/2026',
+                    status: 'En attente',
+                    address: 'Dakar, Almadies',
+                    motivation: 'Approfondir mes connaissances en React'
+                }
+            };
+
+            const student = studentData[studentName] || {
+                email: 'email@example.com',
+                phone: '77 XXX XX XX',
+                formation: 'Formation',
+                date: 'XX/XX/XXXX',
+                status: 'Statut',
+                address: 'Adresse',
+                motivation: 'Motivation'
+            };
+
+            const detailsHtml = `
+                <div class="info-row">
+                    <span class="info-label">Nom complet:</span>
+                    <span class="info-value">${studentName}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value">${student.email}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Téléphone:</span>
+                    <span class="info-value">${student.phone}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Formation:</span>
+                    <span class="info-value">${student.formation}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Date d'inscription:</span>
+                    <span class="info-value">${student.date}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Statut:</span>
+                    <span class="info-value">${student.status}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Adresse:</span>
+                    <span class="info-value">${student.address}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Motivation:</span>
+                    <span class="info-value">${student.motivation}</span>
+                </div>
+            `;
+
+            document.getElementById('studentDetails').innerHTML = detailsHtml;
+            document.getElementById('studentModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('studentModal').style.display = 'none';
+        }
+
+        function confirmInscription(studentName) {
+            if (confirm(`Confirmer l'inscription de ${studentName}?`)) {
+                alert(`Inscription de ${studentName} confirmée!`);
+                // Ici vous pourriez mettre à jour le statut dans la base de données
+            }
+        }
+
+        function deleteInscription(studentName) {
+            if (confirm(`Supprimer l'inscription de ${studentName}?`)) {
+                alert(`Inscription de ${studentName} supprimée!`);
+                // Ici vous pourriez supprimer l'inscription de la base de données
+            }
+        }
+
+        // Fonction de recherche
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#inscriptionsTable tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Fonction de filtrage par statut
+        document.getElementById('statusFilter').addEventListener('change', function(e) {
+            const status = e.target.value;
+            const rows = document.querySelectorAll('#inscriptionsTable tbody tr');
+            
+            rows.forEach(row => {
+                if (status === '') {
+                    row.style.display = '';
+                } else {
+                    const badge = row.querySelector('.badge');
+                    const statusText = badge ? badge.textContent.toLowerCase() : '';
+                    row.style.display = statusText.includes(status) ? '' : 'none';
+                }
+            });
+        });
+    </script>
+<script src='js/admin-core.js'></script>
+<script src='js/inscriptions-dynamic.js'></script>
+<script src='js/main.js'></script>
+</script>
+</body>
+</html>
+
+

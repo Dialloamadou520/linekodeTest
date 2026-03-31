@@ -1,0 +1,65 @@
+# Fichiers de configuration sensibles
+.env
+config.php
+*.local.php
+
+# Clés API et secrets
+api-keys.txt
+secrets/
+
+# Données et logs
+data/
+logs/
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.cache
+
+# Dossiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE et éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dépendances (si vous utilisez Composer)
+vendor/
+composer.lock
+
+# Node modules (si vous utilisez npm)
+node_modules/
+package-lock.json
+
+# Fichiers de backup
+*.bak
+*.backup
+*~
+
+# Fichiers de test locaux
+test-local-*.php
+
+# Fichiers uploadés par les utilisateurs
+uploads/
+images/uploads/
+
+# Cache PHP
+*.cache.php
+cache/
+
+# Sessions PHP
+sessions/
+
+# Fichiers de base de données locale
+*.sqlite
+*.db
+*.sql.gz
+
+# Fichiers de documentation temporaires
+docs/temp/

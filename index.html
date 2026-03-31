@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Linekode - École de formation en développement web. Apprenez à coder avec des experts et lancez votre carrière dans le développement web.">
+    <meta name="author" content="Linekode Sénégal">
+    <meta name="keywords" content="formation, développement web, programmation, Sénégal, Saint-Louis">
+    
+    <!-- Favicon Linekode -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://linekode.com/">
+    <meta property="og:title" content="Linekode - Formation Développement Web Sénégal">
+    <meta property="og:description" content="Votre partenaire pour une carrière réussie dans le développement web. Formations de qualité à Saint-Louis, Sénégal.">
+    <meta property="og:image" content="https://linekode.com/images/logo-linekode.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://linekode.com/">
+    <meta property="twitter:title" content="Linekode - Formation Développement Web Sénégal">
+    <meta property="twitter:description" content="Votre partenaire pour une carrière réussie dans le développement web. Formations de qualité à Saint-Louis, Sénégal.">
+    <meta property="twitter:image" content="https://linekode.com/images/logo-linekode.png">
+    
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/whatsapp-styles.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Linekode</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="inscription.php" class="btn-primary">Inscrivez-vous</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>5ème Cohorte • Saint-Louis, Sénégal</span>
+                    </div>
+                    <h1>Transformez Votre Avenir avec <span class="highlight">Linekode</span></h1>
+                    <p class="hero-subtitle">Formations • Sites Web • Applications Mobiles</p>
+                    <p class="hero-description">Groupement de jeunes passionnés du numérique, nous transformons vos idées en solutions digitales. Conception web, applications mobiles, maintenance et formation pour propulser votre activité.</p>
+                    <div class="hero-buttons">
+                        <a href="formations.html" class="btn-primary">
+                            <i class="fas fa-graduation-cap"></i>
+                            Nos Formations
+                        </a>
+                        <a href="https://wa.me/221711179393?text=Bonjour%20Linekode!%20Je%20souhaite%20des%20informations%20sur%20vos%20formations." target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                        <a href="tel:+221711179393" class="btn-secondary">
+                            <i class="fas fa-phone-alt"></i>
+                            Appeler
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Formation 100% pratique</span>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Accompagnement personnalisé</span>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-certificate"></i>
+                        <span>Certification reconnue</span>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Aide à l'emploi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cohorte Banner -->
+    <section class="cohorte-banner">
+        <div class="container">
+            <div class="cohorte-content">
+                <div class="cohorte-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="cohorte-text">
+                    <h3>🎓 5ème Cohorte en cours</h3>
+                    <p>Rejoignez notre promotion actuelle et démarrez votre formation dès maintenant !</p>
+                </div>
+                <a href="inscription.php" class="btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Rejoindre la cohorte
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pourquoi Choisir Linekode ?</h2>
+                <p>Une approche unique pour vous garantir une formation de qualité et un accompagnement optimal</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fas fa-code"></i>
+                    <h3>Apprentissage Pratique</h3>
+                    <p>Des projets réels pour développer vos compétences en développement web</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Formateurs Experts</h3>
+                    <p>Apprenez auprès de développeurs professionnels avec des années d'expérience</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-award"></i>
+                    <h3>Certification Reconnue</h3>
+                    <p>Obtenez un certificat valorisé par les entreprises du secteur</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Aide à l'Emploi</h3>
+                    <p>Support pour votre recherche d'emploi et connexions avec nos partenaires</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ce Que Disent Nos Étudiants</h2>
+                <p>Découvrez les témoignages de ceux qui ont réussi avec Linekode</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Linekode m'a permis de m'ameliorer et de découvrir le monde du numérique. La formation est complète et le contenu très pratique."</p>
+                    <div class="testimonial-author">
+                        <strong>Amadou BA</strong>
+                        <span>Développeur Backend</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Une formation complète qui m'a donné toutes les compétences nécessaires pour décrocher mon premier emploi."</p>
+                    <div class="testimonial-author">
+                        <strong>Oumar Niang Mbodj</strong>
+                        <span>Développeur Backend</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"L'accompagnement personnalisé et les projets concrets font toute la différence. Je recommande vivement!"</p>
+                    <div class="testimonial-author">
+                        <strong>Awa Diop</strong>
+                        <span>Développeuse Web</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Students & Projects Section -->
+    <section class="students-projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Apprenants Frontend & Leurs Réalisations</h2>
+                <p>Découvrez les projets concrets réalisés par nos étudiants en développement web Frontend</p>
+            </div>
+            <div class="students-grid">
+                <div class="student-project-card" onclick="window.open('#', '_blank')" style="cursor: pointer;">
+                    <img src="images/students/apprenant-1.jpeg" alt="Apprenant 1" class="student-avatar">
+                    <h3>Abdou Aziz Senghor</h3>
+                    <p class="student-course">Formation Frontend</p>
+                    <div class="project-preview">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Projet e-commerce">
+                        <div class="project-overlay">
+                            <h4>Site E-commerce</h4>
+                            <p>Plateforme de vente en ligne avec panier et paiement</p>
+                            <span class="project-link"><i class="fas fa-external-link-alt"></i> Voir le projet</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="student-project-card" onclick="window.open('#', '_blank')" style="cursor: pointer;">
+                    <img src="images/students/apprenant-2.jpeg" alt="Apprenant 2" class="student-avatar">
+                    <h3>Baidy Issa Sy</h3>
+                    <p class="student-course">Formation Frontend</p>
+                    <div class="project-preview">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Projet portfolio">
+                        <div class="project-overlay">
+                            <h4>Portfolio Créatif</h4>
+                            <p>Site portfolio moderne et responsive</p>
+                            <span class="project-link"><i class="fas fa-external-link-alt"></i> Voir le projet</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="student-project-card" onclick="window.open('#', '_blank')" style="cursor: pointer;">
+                    <img src="images/students/apprenant-3.jpeg" alt="Apprenant 3" class="student-avatar">
+                    <h3>Awa DIOP</h3>
+                    <p class="student-course">Formation Frontend</p>
+                    <div class="project-preview">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop" alt="Projet API">
+                        <div class="project-overlay">
+                            <h4>API de Gestion</h4>
+                            <p>API REST pour système de gestion d'entreprise</p>
+                            <span class="project-link"><i class="fas fa-external-link-alt"></i> Voir le projet</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="student-project-card" onclick="window.open('#', '_blank')" style="cursor: pointer;">
+                    <img src="images/students/apprenant-4.jpeg" alt="Apprenant 4" class="student-avatar">
+                    <h3>Ya Awa</h3>
+                    <p class="student-course">Formation Frontend</p>
+                    <div class="project-preview">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop" alt="Projet application">
+                        <div class="project-overlay">
+                            <h4>Application Mobile</h4>
+                            <p>App de réservation avec React Native</p>
+                            <span class="project-link"><i class="fas fa-external-link-alt"></i> Voir le projet</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="student-project-card" onclick="window.open('#', '_blank')" style="cursor: pointer;">
+                    <img src="images/students/apprenant-1.jpeg" alt="Apprenant 5" class="student-avatar">
+                    <h3>Apprenant 5</h3>
+                    <p class="student-course">Formation Frontend</p>
+                    <div class="project-preview">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop" alt="Projet dashboard">
+                        <div class="project-overlay">
+                            <h4>Dashboard Analytics</h4>
+                            <p>Tableau de bord interactif avec graphiques</p>
+                            <span class="project-link"><i class="fas fa-external-link-alt"></i> Voir le projet</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="student-project-card" onclick="window.open('#', '_blank')" style="cursor: pointer;">
+                    <img src="images/students/apprenant-2.jpeg" alt="Apprenant 6" class="student-avatar">
+                    <h3>Apprenant 6</h3>
+                    <p class="student-course">Formation Frontend</p>
+                    <div class="project-preview">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Projet blog">
+                        <div class="project-overlay">
+                            <h4>Blog Moderne</h4>
+                            <p>Plateforme de blog avec système de commentaires</p>
+                            <span class="project-link"><i class="fas fa-external-link-alt"></i> Voir le projet</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Notre Galerie</h2>
+                <p>Découvrez nos espaces de formation, nos événements et la vie à Linekode</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery/photo-1.jpeg" alt="Salle de formation">
+                    <div class="gallery-overlay">
+                        <h3>Salle de Formation</h3>
+                        <p>Espaces modernes et équipés</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery/photo-2.jpeg" alt="Étudiants en cours">
+                    <div class="gallery-overlay">
+                        <h3>Sessions de Cours</h3>
+                        <p>Apprentissage collaboratif</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery/photo-3.jpeg" alt="Atelier pratique">
+                    <div class="gallery-overlay">
+                        <h3>Ateliers Pratiques</h3>
+                        <p>Projets réels et concrets</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery/photo-4.jpeg" alt="Travail d'équipe">
+                    <div class="gallery-overlay">
+                        <h3>Travail d'Équipe</h3>
+                        <p>Collaboration et entraide</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery/photo-5.jpeg" alt="Événement de remise de diplômes">
+                    <div class="gallery-overlay">
+                        <h3>Cérémonie de Diplômes</h3>
+                        <p>Célébration des réussites</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery/photo-6.jpeg" alt="Espace de travail">
+                    <div class="gallery-overlay">
+                        <h3>Espace Coworking</h3>
+                        <p>Zone de travail collaborative</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à Commencer Votre Formation ?</h2>
+                <p>Rejoignez des centaines d'étudiants qui ont transformé leur carrière avec Linekode</p>
+                <a href="inscription.php" class="btn-white">
+                    Inscrivez-vous maintenant
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <span>Linekode</span>
+                    </div>
+                    <p>Votre partenaire pour une carrière réussie dans le développement web. Formations de qualité et conception de sites web et d'applications mobiles.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> linekodesn@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +221 71 117 93 93</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linekode. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal d'inscription -->
+    <div id="inscriptionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inscription à Linekode</h2>
+                <p>Commencez votre parcours vers une carrière en développement web</p>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="inscriptionSuccess" class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Inscription réussie !</h3>
+                    <p>Merci pour votre inscription. Notre équipe vous contactera dans les 24 heures.</p>
+                    <button class="btn-primary" onclick="closeInscriptionModal()">Fermer</button>
+                </div>
+                <form id="inscriptionForm" class="modal-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                            <span class="error-message">Ce champ est requis</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                            <span class="error-message">Ce champ est requis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email_inscription">Email *</label>
+                        <input type="email" id="email_inscription" name="email" required>
+                        <span class="error-message">Email invalide</span>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                            <span class="error-message">Ce champ est requis</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Âge</label>
+                            <input type="number" id="age" name="age" min="16" max="99">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="formation">Formation souhaitée *</label>
+                        <select id="formation" name="formation" required>
+                            <option value="">Sélectionnez une formation</option>
+                            <option value="frontend">Développement Web Frontend</option>
+                            <option value="backend">Développement Web Backend</option>
+                            <option value="fullstack">Développement Full Stack</option>
+                            <option value="javascript">JavaScript Avancé</option>
+                            <option value="react">React & Next.js</option>
+                            <option value="devops">DevOps & Déploiement</option>
+                        </select>
+                        <span class="error-message">Veuillez sélectionner une formation</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="niveau">Niveau actuel *</label>
+                        <select id="niveau" name="niveau" required>
+                            <option value="">Sélectionnez votre niveau</option>
+                            <option value="debutant">Débutant (aucune expérience)</option>
+                            <option value="intermediaire">Intermédiaire (quelques bases)</option>
+                            <option value="avance">Avancé (expérience significative)</option>
+                        </select>
+                        <span class="error-message">Veuillez sélectionner votre niveau</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="motivation">Pourquoi souhaitez-vous suivre cette formation ?</label>
+                        <textarea id="motivation" name="motivation" rows="3" placeholder="Parlez-nous de vos objectifs..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="accepte_conditions" name="accepte_conditions" required>
+                            <label for="accepte_conditions">
+                                J'accepte les <a href="#" target="_blank">conditions générales</a> et la <a href="#" target="_blank">politique de confidentialité</a> *
+                            </label>
+                        </div>
+                        <span class="error-message">Vous devez accepter les conditions</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">
+                                Je souhaite recevoir des informations sur les formations et actualités de Linekode
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="inscriptionForm" class="btn-primary">
+                    <i class="fas fa-check"></i>
+                    Valider mon inscription
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js?v=2"></script>
+</body>
+</html>

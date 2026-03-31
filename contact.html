@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Linekode Sénégal">
+    <meta name="keywords" content="contact, Linekode, Sénégal, Saint-Louis, développement web, formation">
+    
+    <!-- Favicon Linekode -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://linekode.com/contact.html">
+    <meta property="og:title" content="Contact - Linekode Sénégal">
+    <meta property="og:description" content="Contactez Linekode pour vos formations en développement web. Téléphone: +221 71 117 93 93.">
+    <meta property="og:image" content="https://linekode.com/images/logo-linekode.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://linekode.com/contact.html">
+    <meta property="twitter:title" content="Contact - Linekode Sénégal">
+    <meta property="twitter:description" content="Contactez Linekode pour vos formations en développement web. Téléphone: +221 71 117 93 93.">
+    <meta property="twitter:image" content="https://linekode.com/images/logo-linekode.png">
+    
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/whatsapp-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Linekode</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="inscription.php" class="btn-primary">Inscrivez-vous</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header contact-header">
+        <div class="container">
+            <div class="header-badge">
+                <i class="fas fa-headset"></i>
+                <span>Support Client 24/7</span>
+            </div>
+            <h1>Parlons de Votre Projet</h1>
+            <p class="header-subtitle">Notre équipe d'experts est à votre écoute pour répondre à toutes vos questions</p>
+            <p class="header-description">Formation • Développement Web • Applications Mobiles</p>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-info-grid">
+                <a href="mailto:linekodesn@gmail.com" class="contact-info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>linekodesn@gmail.com</p>
+                </a>
+                <a href="https://wa.me/221711179393?text=Bonjour%20Linekode!%20Je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" class="contact-info-card whatsapp-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>+221 71 117 93 93</p>
+                    <span class="contact-badge">Instantané</span>
+                </a>
+                <a href="tel:+221711179393" class="contact-info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Téléphone</h3>
+                    <p>+221 71 117 93 93</p>
+                </a>
+                <a href="https://maps.app.goo.gl/nh3awSWfZ6fiSbLJ8" target="_blank" class="contact-info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adresse</h3>
+                    <p>Saint-Louis<br>Sénégal</p>
+                </a>
+                <div class="contact-info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horaires</h3>
+                    <p>Lun - Ven: 9h00 - 18h00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form and FAQ -->
+    <section class="contact-main-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <div class="form-header">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h2>Envoyez-nous un Message</h2>
+                        <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures</p>
+                    </div>
+                    <div id="formSuccess" class="form-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Message envoyé avec succès !</strong></p>
+                        <p>Nous vous répondrons dans les plus brefs délais.</p>
+                    </div>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> Nom complet *</label>
+                                <input type="text" id="name" name="name" required placeholder="Votre nom complet">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                            </div>
+                        </div>
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-phone"></i> Téléphone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+221 77 XXX XX XX">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject"><i class="fas fa-tag"></i> Sujet *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="information">💡 Demande d'information</option>
+                                    <option value="inscription">🎓 Inscription à une formation</option>
+                                    <option value="projet">💻 Projet de développement</option>
+                                    <option value="financement">💰 Questions sur le financement</option>
+                                    <option value="autre">📋 Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment-dots"></i> Votre Message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Décrivez votre demande en détail..."></textarea>
+                        </div>
+                        <button type="button" id="submitBtn" class="btn-primary btn-full btn-contact">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer le Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- FAQ -->
+                <div class="faq-wrapper">
+                    <h2>Questions Fréquentes</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <h3>Quels sont les prérequis pour suivre une formation ?</h3>
+                            <p>Aucun prérequis technique n'est nécessaire pour nos formations débutant. Pour les formations avancées, une connaissance de base en programmation est recommandée.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Les formations sont-elles disponibles en ligne ?</h3>
+                            <p>Oui, toutes nos formations sont disponibles en ligne avec des sessions en direct et des ressources accessibles 24/7.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Proposez-vous des facilités de paiement ?</h3>
+                            <p>Oui, nous proposons des paiements échelonnés sur 3, 6 ou 12 mois sans frais. Contactez-nous pour plus d'informations.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Puis-je obtenir un emploi après la formation ?</h3>
+                            <p>Nous offrons un accompagnement à l'emploi avec préparation aux entretiens, révision de CV et mise en relation avec nos entreprises partenaires.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Notre Localisation</h2>
+            <a href="https://maps.app.goo.gl/nh3awSWfZ6fiSbLJ8" target="_blank" class="map-placeholder">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Saint-Louis, Sénégal</p>
+                <p class="map-link"><i class="fas fa-external-link-alt"></i> Voir sur Google Maps</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <span>Linekode</span>
+                    </div>
+                    <p>Votre partenaire pour une carrière réussie dans le développement web. Formations de qualité et conception de sites web et d'applications mobiles.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> linekodesn@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +221 77 352 53 82</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linekode. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Formulaire de contact
+        document.getElementById('submitBtn').onclick = function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validation
+            if (!name || !email || !subject || !message) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            // Validation email simple
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Veuillez entrer une adresse email valide');
+                return;
+            }
+            
+            // Créer l'objet message
+            const messageData = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                status: 'new',
+                date: new Date().toISOString().split('T')[0],
+                time: new Date().toLocaleTimeString('fr-FR')
+            };
+            
+            // Sauvegarder dans localStorage
+            let messages = JSON.parse(localStorage.getItem('linekode_messages') || '[]');
+            messages.unshift(messageData);
+            localStorage.setItem('linekode_messages', JSON.stringify(messages));
+            
+            // Afficher le succès
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        };
+    </script>
+    <script src="js/script.js?v=2"></script>
+</body>
+</html>

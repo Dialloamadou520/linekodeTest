@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annonces - Admin Linekode</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin-dynamic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Réutiliser les styles du dashboard */
+        .admin-dashboard {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+        .admin-header {
+            background: #0284c7;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .btn-logout {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-logout:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .admin-container {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+        .admin-sidebar {
+            width: 250px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            padding: 20px 0;
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: #6b7280;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: #f0f9ff;
+            color: #0284c7;
+            border-right: 3px solid #0284c7;
+        }
+        .admin-content {
+            flex: 1;
+            padding: 30px;
+        }
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .page-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        .btn-primary {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover {
+            background: #0369a1;
+        }
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        .annonces-grid {
+            display: grid;
+            gap: 20px;
+        }
+        .annonce-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        .annonce-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .annonce-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        .annonce-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        .annonce-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+        .annonce-content {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .annonce-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-action {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-edit {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+        .btn-edit:hover {
+            background: #0284c7;
+            color: white;
+        }
+        .btn-delete {
+            background: #fecaca;
+            color: #dc2626;
+        }
+        .btn-delete:hover {
+            background: #dc2626;
+            color: white;
+        }
+        .btn-publish {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        .btn-publish:hover {
+            background: #16a34a;
+            color: white;
+        }
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-published {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        .badge-draft {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        .badge-scheduled {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 50px auto;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0284c7;
+        }
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #6b7280;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-logo">
+                <i class="fas fa-code"></i>
+                <span>Linekode Admin</span>
+            </div>
+            <div class="admin-user">
+                <span><i class="fas fa-user"></i> Administrateur</span>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </header>
+
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="inscriptions.html"><i class="fas fa-user-plus"></i> Inscriptions</a></li>
+                    <li><a href="annonces.html" class="active"><i class="fas fa-bullhorn"></i> Annonces</a></li>
+                    <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li><a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="admin-content">
+                <div class="content-header">
+                    <h1 class="page-title">Gestion des Annonces</h1>
+                    <button class="btn-primary" onclick="openAnnonceModal()">
+                        <i class="fas fa-plus"></i> Nouvelle annonce
+                    </button>
+                </div>
+
+                <!-- Annonces List -->
+                <div class="content-section">
+                    <div class="annonces-grid" id="annoncesGrid">
+                        <div class="annonce-card">
+                            <div class="annonce-header">
+                                <div>
+                                    <div class="annonce-title">Nouvelle session de formation React</div>
+                                    <div class="annonce-meta">
+                                        <span><i class="fas fa-calendar"></i> 19/02/2026</span>
+                                        <span><i class="fas fa-user"></i> Admin</span>
+                                    </div>
+                                </div>
+                                <span class="badge badge-published">Publié</span>
+                            </div>
+                            <div class="annonce-content">
+                                Nous sommes ravis d'annoncer l'ouverture d'une nouvelle session de formation React Avancé. Cette formation intensive de 8 semaines vous permettra de maîtriser les concepts avancés de React...
+                            </div>
+                            <div class="annonce-actions">
+                                <button class="btn-action btn-edit" onclick="editAnnonce(1)">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </button>
+                                <button class="btn-action btn-delete" onclick="deleteAnnonce(1)">
+                                    <i class="fas fa-trash"></i> Supprimer
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="annonce-card">
+                            <div class="annonce-header">
+                                <div>
+                                    <div class="annonce-title">Workshop gratuit : Introduction à JavaScript</div>
+                                    <div class="annonce-meta">
+                                        <span><i class="fas fa-calendar"></i> 18/02/2026</span>
+                                        <span><i class="fas fa-user"></i> Admin</span>
+                                    </div>
+                                </div>
+                                <span class="badge badge-scheduled">Programmé</span>
+                            </div>
+                            <div class="annonce-content">
+                                Rejoignez-nous pour un workshop gratuit d'introduction à JavaScript. Idéal pour les débutants qui souhaitent découvrir les bases de la programmation web...
+                            </div>
+                            <div class="annonce-actions">
+                                <button class="btn-action btn-edit" onclick="editAnnonce(2)">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </button>
+                                <button class="btn-action btn-publish" onclick="publishAnnonce(2)">
+                                    <i class="fas fa-paper-plane"></i> Publier
+                                </button>
+                                <button class="btn-action btn-delete" onclick="deleteAnnonce(2)">
+                                    <i class="fas fa-trash"></i> Supprimer
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="annonce-card">
+                            <div class="annonce-header">
+                                <div>
+                                    <div class="annonce-title">Offre spéciale : 20% de réduction</div>
+                                    <div class="annonce-meta">
+                                        <span><i class="fas fa-calendar"></i> 17/02/2026</span>
+                                        <span><i class="fas fa-user"></i> Admin</span>
+                                    </div>
+                                </div>
+                                <span class="badge badge-draft">Brouillon</span>
+                            </div>
+                            <div class="annonce-content">
+                                Profitez de notre offre spéciale avec 20% de réduction sur toutes nos formations pour le mois de mars. Une occasion unique de vous former à moindre coût...
+                            </div>
+                            <div class="annonce-actions">
+                                <button class="btn-action btn-edit" onclick="editAnnonce(3)">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </button>
+                                <button class="btn-action btn-publish" onclick="publishAnnonce(3)">
+                                    <i class="fas fa-paper-plane"></i> Publier
+                                </button>
+                                <button class="btn-action btn-delete" onclick="deleteAnnonce(3)">
+                                    <i class="fas fa-trash"></i> Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Annonce Modal -->
+    <div id="annonceModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAnnonceModal()">&times;</button>
+            <h2 id="modalTitle">Nouvelle annonce</h2>
+            <form id="annonceForm" onsubmit="saveAnnonce(event)">
+                <div class="form-group">
+                    <label for="annonceTitle">Titre de l'annonce</label>
+                    <input type="text" id="annonceTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="annonceContent">Contenu de l'annonce</label>
+                    <textarea id="annonceContent" name="content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="annonceStatus">Statut</label>
+                    <select id="annonceStatus" name="status">
+                        <option value="draft">Brouillon</option>
+                        <option value="published">Publié</option>
+                        <option value="scheduled">Programmé</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="annonceDate">Date de publication</label>
+                    <input type="date" id="annonceDate" name="date">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeAnnonceModal()">Annuler</button>
+                    <button type="submit" class="btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Vérifier si l'utilisateur est connecté
+        if (!localStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+
+        let currentEditId = null;
+
+        function openAnnonceModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').textContent = 'Nouvelle annonce';
+            document.getElementById('annonceForm').reset();
+            document.getElementById('annonceDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('annonceModal').style.display = 'block';
+        }
+
+        function closeAnnonceModal() {
+            document.getElementById('annonceModal').style.display = 'none';
+            currentEditId = null;
+        }
+
+        function editAnnonce(id) {
+            currentEditId = id;
+            document.getElementById('modalTitle').textContent = 'Modifier l\'annonce';
+            
+            // Simuler le chargement des données de l'annonce
+            const annonceData = {
+                1: {
+                    title: 'Nouvelle session de formation React',
+                    content: 'Nous sommes ravis d\'annoncer l\'ouverture d\'une nouvelle session de formation React Avancé...',
+                    status: 'published',
+                    date: '2026-02-19'
+                },
+                2: {
+                    title: 'Workshop gratuit : Introduction à JavaScript',
+                    content: 'Rejoignez-nous pour un workshop gratuit d\'introduction à JavaScript...',
+                    status: 'scheduled',
+                    date: '2026-02-18'
+                }
+            };
+
+            const data = annonceData[id] || {
+                title: '',
+                content: '',
+                status: 'draft',
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            document.getElementById('annonceTitle').value = data.title;
+            document.getElementById('annonceContent').value = data.content;
+            document.getElementById('annonceStatus').value = data.status;
+            document.getElementById('annonceDate').value = data.date;
+            
+            document.getElementById('annonceModal').style.display = 'block';
+        }
+
+        function saveAnnonce(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const annonce = {
+                title: formData.get('title'),
+                content: formData.get('content'),
+                status: formData.get('status'),
+                date: formData.get('date')
+            };
+
+            if (currentEditId) {
+                alert(`Annonce "${annonce.title}" modifiée avec succès!`);
+            } else {
+                alert(`Annonce "${annonce.title}" créée avec succès!`);
+            }
+
+            closeAnnonceModal();
+            // Ici vous pourriez recharger la liste des annonces
+        }
+
+        function publishAnnonce(id) {
+            if (confirm('Publier cette annonce maintenant?')) {
+                alert('Annonce publiée avec succès!');
+                // Ici vous pourriez mettre à jour le statut dans la base de données
+            }
+        }
+
+        function deleteAnnonce(id) {
+            if (confirm('Supprimer cette annonce?')) {
+                alert('Annonce supprimée avec succès!');
+                // Ici vous pourriez supprimer l'annonce de la base de données
+            }
+        }
+
+        // Fermer le modal en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modal = document.getElementById('annonceModal');
+            if (event.target === modal) {
+                closeAnnonceModal();
+            }
+        }
+    </script>
+<script src='js/admin-core.js'></script>
+<script src='js/annonces-dynamic.js'></script>
+<script src='js/main.js'></script>
+</script>
+</body>
+</html>
+
+
